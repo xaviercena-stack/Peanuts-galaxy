@@ -1,0 +1,86 @@
+:root{
+  --bg:#081025; --card:#0f1726; --accent:#6aa8ff; --gold:#ffd166; --white:#f7fbff; --muted:#9fb6d9;
+}
+
+/* base */
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,var(--bg),#071022);color:var(--white);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:28px}
+.page-root{width:100%;max-width:1100px}
+.site-header{text-align:center;margin-bottom:12px}
+.screen{background:var(--card);padding:16px;border-radius:10px;margin-bottom:12px;box-shadow:0 8px 24px rgba(2,6,23,0.6)}
+
+.wallet{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.controls{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.btn-primary,.btn-secondary{border:0;cursor:pointer;padding:10px 14px;border-radius:8px;font-weight:700}
+.btn-primary{background:linear-gradient(180deg,var(--accent),#2d6fff);color:#fff}
+.btn-secondary{background:#1b2636;color:var(--muted)}
+.paytable{margin-top:14px;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px}
+
+/* Slot machine layout */
+.slot-machine{display:flex;gap:10px;justify-content:center;margin:12px 0}
+
+/* Reel window */
+.reel {
+  width: 110px;
+  height: 320px; /* visible window size, tune to match cells*rows */
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+  border-radius: 10px;
+  padding: 6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* track & cells */
+.reel-track {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  will-change: transform;
+}
+.reel-cell {
+  width: 88px;
+  height: 56px; /* integer height */
+  border-radius: 8px;
+  background: transparent;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+  margin: 3px 0; /* total gap 6px */
+  overflow: visible;
+}
+.reel-cell img { background: transparent; display:block; max-width:100%; max-height:100%; }
+
+/* visual states and effects */
+.reel.wild-extended{box-shadow:0 0 48px 14px rgba(255,200,50,0.12);border:2px solid rgba(255,200,50,0.16)}
+.reel.spin-starting{filter: blur(0.6px)}
+.reel.spin-ended{filter: none}
+.reel-track.stop-bounce{transition: transform 280ms cubic-bezier(.2,.9,.3,1)}
+
+/* multiplier reveal badge */
+.mult-badge{
+  position:absolute; top:8px; right:8px;
+  background:linear-gradient(180deg,var(--gold),#ffb84d);
+  color:#111; font-weight:800; padding:6px 8px; border-radius:8px; transform-origin:center; box-shadow:0 8px 24px rgba(0,0,0,0.4); opacity:0; transform:scale(0.6) translateY(-4px);
+}
+.mult-badge.show{ animation:mult-show 700ms cubic-bezier(.2,.9,.2,1) forwards; }
+@keyframes mult-show { 0%{opacity:0;transform:scale(0.6) translateY(-6px);}60%{opacity:1;transform:scale(1.12) translateY(0);}100%{opacity:1;transform:scale(1) translateY(0);} }
+
+/* sparkle */
+.sparkle { position:absolute; width:10px; height:10px; background:radial-gradient(circle,rgba(255,255,255,0.95),rgba(255,255,255,0.4) 40%, transparent 60%); border-radius:50%; pointer-events:none; animation:sparkle-fly 900ms ease-out forwards; }
+@keyframes sparkle-fly { 0%{opacity:1; transform:translate(0,0) scale(0.6)} 100%{opacity:0; transform:translate(-18px,-28px) scale(1.6)} }
+
+/* overlays */
+.overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.7);z-index:9999;pointer-events:auto}
+.overlay.hidden{display:none;pointer-events:none}
+.overlay-panel{background:linear-gradient(180deg,var(--card),#0b1220);padding:20px;border-radius:12px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+
+/* small responsive tweaks */
+@media (max-width:720px){
+  .reel{width:76px;height:240px}
+  .reel-cell{width:60px;height:44px;margin:2px 0}
+}

@@ -1,0 +1,6 @@
+{
+  "main": "math.js",
+  "method": "getSpinResult",
+  "lookup_tables": ["lookup_base_0.csv"],
+  "books": ["books_base.jsonl.zst"]
+}

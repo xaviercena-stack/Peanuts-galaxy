@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Peanuts Galaxy Slot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app" class="page-root">
+    <section id="intro-screen" class="screen">
+      <h2>Peanuts Galaxy</h2>
+      <p>Prépare-toi à explorer l’univers des cacahuètes interstellaires.</p>
+      <button id="start-button" class="btn-primary" aria-controls="slot-machine">Commencer</button>
+    </section>
+
+    <header class="site-header">
+      <h1>Peanuts Galaxy</h1>
+    </header>
+
+    <section id="game-area" aria-live="polite">
+      <div id="wallet" class="wallet">
+        <span>Solde : </span><strong id="balance">1000</strong>
+        <label for="bet" class="label-inline">Mise :</label>
+        <input type="number" id="bet" name="bet" value="50" min="1" max="100000" aria-label="Mise" />
+      </div>
+
+      <div id="slot-machine" class="slot-machine" aria-hidden="true" role="application">
+        <div class="reel" id="reel1" aria-label="Rouleau 1"></div>
+        <div class="reel" id="reel2" aria-label="Rouleau 2"></div>
+        <div class="reel" id="reel3" aria-label="Rouleau 3"></div>
+        <div class="reel" id="reel4" aria-label="Rouleau 4"></div>
+        <div class="reel" id="reel5" aria-label="Rouleau 5"></div>
+      </div>
+
+      <div class="controls">
+        <div class="left-controls">
+          <button id="spin-button" class="btn-secondary">SPIN</button>
+          <button id="auto-spin" class="btn-secondary">Auto x10</button>
+        </div>
+        <div id="result" role="status" aria-live="polite"></div>
+      </div>
+
+      <section id="paytable" class="paytable">
+        <h2>Tableau des gains</h2>
+        <ul id="paytable-list"></ul>
+      </section>
+    </section>
+  </main>
+
+  <div id="jackpot-overlay" class="overlay hidden" role="status" aria-hidden="true">
+    <div class="overlay-panel">
+      <h2>JACKPOT INTERGALACTIQUE</h2>
+      <p id="jackpot-amount">+250000</p>
+    </div>
+  </div>
+
+  <audio id="win-sound" src="https://www.soundjay.com/button/sounds/button-3.mp3" preload="auto"></audio>
+  <audio id="spin-sound" src="https://www.soundjay.com/button/sounds/button-09.mp3" preload="auto"></audio>
+  <audio id="celebration-sound" src="https://www.soundjay.com/human/sounds/applause-8.mp3" preload="auto"></audio>
+  <audio id="bonus-sound" src="https://www.soundjay.com/button/sounds/button-10.mp3" preload="auto"></audio>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

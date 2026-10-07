@@ -1,0 +1,15 @@
+{
+  "name": "assets",
+  "version": "1.0.0",
+  "description": "Assets visuels pour Peanuts Galaxy",
+  "author": "Xavier",
+  "files": [
+    "logo.png",
+    "background.jpg",
+    "symbols/peanut.png",
+    "symbols/rocket.png",
+    "symbols/planet.png",
+    "symbols/alien.png",
+    "symbols/diamond.png"
+  ]
+}

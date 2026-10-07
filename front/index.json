@@ -1,0 +1,7 @@
+{
+  "name": "peanuts-frontend",
+  "version": "1.0.0",
+  "main": "index.html",
+  "description": "Interface utilisateur pour Peanuts Galaxy",
+  "author": "Xavier"
+}
